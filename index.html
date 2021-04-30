@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+  <link rel="stylesheet" href="./CSS/reset.css">
+  <link rel="stylesheet" href="./CSS/styles.css">
+  <link rel="stylesheet" href="./CSS/Views/nav.css">
+  <link rel="stylesheet" href="./CSS/Views/botoes.css">
+  <link rel="stylesheet" href="./CSS/Views/articles.css">
+  <link rel="stylesheet" href="./CSS/Modal/modal.css">
+
+  <script src="./Scripts/Modal/modal.js" defer></script>
+  <script src="./Scripts/app.js" defer></script>
+</head>
+<body>
+  <div class="titulo">
+    <h2>Menu do Restaurante</h2>
+    <div class="underline"></div>
+  </div>
+
+<!------------Nav Bar---------- -->
+  <nav class="nav-bar">
+    <label for="tipoBusca">
+        Busca por:
+        <select id="tipoBusca">
+            <option value="titulo">Titulo</option>
+            <option value="descricao">Descrição</option>
+        </select>
+    </label>
+    <form class="form-busca">
+        <input type="text" id="inputBusca" class="input-busca" placeholder="Digite um item para buscar">
+        <span class="material-icons busca">
+            search
+        </span>
+    </form>
+    <ul id="nav-opcoes">
+        <!-- <li><a href="">Cadastro de Menus</a></li> -->
+        <button type="button" onclick="abrirModal('modal')">Cadastro de Menus</button>
+    </ul>
+</nav>
+
+<!------------Botões de navegação---------- -->
+<div class="btn-container">
+  <button type="button" class="filter-btn" id="todos">Todos</button>
+  <h6 id="contadorTodos"></h6>
+  <button type="button" class="filter-btn fas fa-cheese" id="entrada">  Entradas</button>
+  <h6 id="contadorEntradas"></h6>
+  <button type="button" class="filter-btn fas fa-utensils" id="pratoPrincipais">  Pratos Principais</button>
+  <h6 id="contadorPratos"></h6>
+  <button type="button" class="filter-btn fas fa-candy-cane" id="sobremesas">  Sobremesas</button>
+  <h6 id="contadorSobremesas"></h6>
+</div>
+
+<!------------Itens cadastrados---------- -->
+<div class="container-cards" id="container-cards" >
+  <!-- <article class="menu-item">
+    <img src="./Medias/imagens/item-1.jpeg" alt="item de cardápio" class="imagens" />
+    <div class="item-info">
+      <header>
+        <h4>buttermilk pancakes</h4>
+        <h4 class="preco-item">R$ 15</h4>
+      </header>
+      <p class="item-descricao">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Repudiandae, sint quam. Et reprehenderit fugiat nesciunt inventore
+        laboriosam excepturi! Quo, officia.
+      </p>
+      <div class="icons-item">
+        <i class="fas fa-cheese"></i>
+        <span class="material-icons acao" onclick="removeMenu()"> delete</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="menu-item">
+    <img src="./Medias/imagens/item-1.jpeg" alt="item de cardápio" class="imagens" />
+    <div class="item-info">
+      <header>
+        <h4>buttermilk pancakes</h4>
+        <h4 class="preco-item"">R$ 15</h4>
+      </header>
+      <p class="item-descricao">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Repudiandae, sint quam. Et reprehenderit fugiat nesciunt inventore
+        laboriosam excepturi! Quo, officia.
+      </p>
+      <div class="icons-item">
+        <i class="fas fa-utensils"></i>
+        <span class="material-icons acao"> delete</span>
+      </div>
+    </div>
+  </article> -->
+
+</div>
+
+<!-- ----------Modal---------- -->
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+      <span class="material-icons fechar-modal" onclick="fecharModal('modal')">
+          close
+      </span>
+      <div class="modal-header">
+          <h1>Cadastro de Menus</h1>
+      </div>
+
+      <!-- Area de cadastro de menus -->
+
+      <div class="modal-body">
+          <div id="visualizacaoModal" class="visualizacao">
+
+            <div class="form-container">
+              <form class="main-form">
+                <input type="text" name="titulo" id="titulo" class="form-field" placeholder="Nome do prato" required>
+                <input type="number" name="preco" id="preco" class="form-field" placeholder="Valor do prato" required>
+                  <select id="categoria" class="form-field" placeholder="a" >
+                    <option value="selecione" selected>Selecione uma opção</option>
+                    <option value="entrada" >Entrada</option>
+                    <option value="pratoPrincipal">Prato Principal</option>
+                    <option value="sobremesa">Sobremesa</option>
+                  </select>
+                <input type="url" name="urlImagem" id="urlImagem" class="form-field" placeholder="Coloque a URL da imagem" required>
+                <textarea name="descricao" id="descricao" class="form-field" placeholder="Insira a descrição do prato" maxlength="200"></textarea>
+                <div class="form-acoes">
+                    <button id="btnSalvar" 
+                    class="cadastrarProduto" 
+                    type="button" 
+                    onclick="
+                        adicionaItem(
+                        titulo.value,
+                        parseFloat(preco.value),
+                        categoria.value,
+                        urlImagem.value,
+                        descricao.value);
+                        ">Salvar</button>
+
+                </div>
+              </form>
+            </div>
+              </form>
+          </div>
+
+          <!-- Fim Area de cadastro de menus -->
+
+          </div>
+      </div>
+
+  </div>
+</div>
+  
+</body>
+</html>
