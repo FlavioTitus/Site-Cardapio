@@ -39,6 +39,8 @@
 
 .acao{
   color: brown;
+  cursor: pointer;
+  margin-left: 370px;
 }
 
 .fa-utensils,
@@ -53,7 +55,6 @@
   position:absolute;
   bottom: 0;
 }
-
 
 /* ----------Media Queries---------- */
 

@@ -16,6 +16,7 @@
 
   <script src="./Scripts/Modal/modal.js" defer></script>
   <script src="./Scripts/app.js" defer></script>
+  <script src="./Scripts/manipulaDados.js" defer></script>
 </head>
 <body>
   <div class="titulo">
@@ -46,13 +47,13 @@
 
 <!------------Botões de navegação---------- -->
 <div class="btn-container">
-  <button type="button" class="filter-btn" id="todos">Todos</button>
+  <button type="button" class="filter-btn" id="todos" onclick="atualizaListaMenus()">Todos</button>
   <h6 id="contadorTodos"></h6>
-  <button type="button" class="filter-btn fas fa-cheese" id="entrada">  Entradas</button>
+  <button type="button" class="filter-btn fas fa-cheese" id="entrada" onclick="filtraEntrada()">  Entradas</button>
   <h6 id="contadorEntradas"></h6>
-  <button type="button" class="filter-btn fas fa-utensils" id="pratoPrincipais">  Pratos Principais</button>
+  <button type="button" class="filter-btn fas fa-utensils" id="pratoPrincipais" onclick="filtraPratos()">  Pratos Principais</button>
   <h6 id="contadorPratos"></h6>
-  <button type="button" class="filter-btn fas fa-candy-cane" id="sobremesas">  Sobremesas</button>
+  <button type="button" class="filter-btn fas fa-candy-cane" id="sobremesas" onclick="filtraSobremesa()">  Sobremesas</button>
   <h6 id="contadorSobremesas"></h6>
 </div>
 
@@ -107,15 +108,15 @@
       </span>
       <div class="modal-header">
           <h1>Cadastro de Menus</h1>
-      </div>
-
-      <!-- Area de cadastro de menus -->
-
-      <div class="modal-body">
+        </div>
+        
+        <!-- Area de cadastro de menus no modal-->
+        
+        <div class="modal-body">
           <div id="visualizacaoModal" class="visualizacao">
-
             <div class="form-container">
               <form class="main-form">
+                <p>(Todos os campos são obrigatórios)</p>
                 <input type="text" name="titulo" id="titulo" class="form-field" placeholder="Nome do prato" required>
                 <input type="number" name="preco" id="preco" class="form-field" placeholder="Valor do prato" required>
                   <select id="categoria" class="form-field" placeholder="a" >
@@ -128,7 +129,7 @@
                 <textarea name="descricao" id="descricao" class="form-field" placeholder="Insira a descrição do prato" maxlength="200"></textarea>
                 <div class="form-acoes">
                     <button id="btnSalvar" 
-                    class="cadastrarProduto" 
+                    class="cadastrarMenu" 
                     type="button" 
                     onclick="
                         adicionaItem(
@@ -144,9 +145,6 @@
             </div>
               </form>
           </div>
-
-          <!-- Fim Area de cadastro de menus -->
-
           </div>
       </div>
 

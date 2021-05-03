@@ -1,5 +1,6 @@
-const menus = []
+// ----------Declaração de variaveis---------
 
+const menus = []
 let proximoId = 1
 const inputTitulo = document.getElementById('titulo')
 const inputPreco = document.getElementById('preco')
@@ -15,6 +16,8 @@ const contadorMenus = document.getElementById('contadorTodos')
 const contadorEntradas = document.getElementById('contadorEntradas')
 const contadorPratos = document.getElementById('contadorPratos')
 const contadoSobremesas = document.getElementById('contadorSobremesas')
+
+// ----------Funções de busca---------
 
 const buscaMenuPorId = id => menu => menu.id === id;
 
@@ -39,7 +42,16 @@ inputBusca.addEventListener('keyup', (event) => {
   atualizaListaMenus(listaMenusFiltrada);
 });
 
+// ----------Manipulação de items da tela---------
+
 const adicionaItem = () => {
+  if(!inputTitulo.value ||
+    !inputPreco.value ||
+    !inputCategoria.value ||
+    !inputUrlImagem.value ||
+    !textAreaDescricao.value ){
+    alert('Preencha todos os campos')
+  } else {
   const menu = {
       id: proximoId,
       titulo: inputTitulo.value,
@@ -56,12 +68,13 @@ const adicionaItem = () => {
   somatorios()
   console.log(menus)
 }
+}
 
 btnSalvar.onclick = adicionaItem;
 
 limpaCampos = () => {
   inputTitulo.value = ''
-  inputCategoria.value = ''
+  inputCategoria.value = 'selecione'
   inputPreco.value = ''
   inputUrlImagem.value = ''
   textAreaDescricao.value = ''
@@ -74,7 +87,7 @@ const atualizaListaMenus = listaMenus => {
   for (menu of listaDeMenus){
     articles += `
     <article class="menu-item">
-    <img src="${menu.urlImagem}" alt="item de cardápio" class="imagens" />
+    <img src="${menu.urlImagem}" alt="Foto do prato" class="imagens" />
     <div class="item-info">
       <header>
         <h4>${menu.titulo}</h4>
@@ -97,14 +110,3 @@ const removeMenu = (id) => {
   atualizaListaMenus()
   somatorios()
 }
-
-const somar = (n1, n2) => n1 + n2; 
-
-const somatorios = () => {
-  somaMenus()
-}
-
-const somaMenus = () => {
-  return contadorMenus.innerHTML = menus.length
-}
-

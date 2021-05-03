@@ -45,7 +45,12 @@
   justify-content: space-evenly;
 }
 
-/* --------- Register Styles -------- */
+.modal-body p{
+  text-align: center;
+  color: #8e8e8e;
+}
+
+/* --------- Estilos do formulário de cadastro de menus -------- */
 
 .form-container{
   width: 100%;
@@ -94,6 +99,7 @@ textarea.form-field{
   cursor: pointer;
   border-radius: 4px;
   opacity: 0.9;
+  margin-left: 165px;
 }
 
 .form-acoes button:hover {
